@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galería de Arte - Teoría y Análisis Completo</title>
+
+  <style>
+    :root {
+      --bg: #fdf6f0;
+      --text: #2b2b2b;
+      --primary: #c0392b;
+      --card: #ffffff;
+      --border: #ddd;
+      --highlight: #f9ecec;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Poppins", Arial, sans-serif;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 18px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 6px 12px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    nav a:hover, nav a.active {
+      background-color: #a93226;
+      text-decoration: none;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 70px 20px 50px;
+      background: var(--highlight);
+      border-bottom: 2px solid var(--primary);
+    }
+    .hero h2 {
+      color: var(--primary);
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto 20px;
+      font-size: 1.15rem;
+      color: #444;
+    }
+    .hero button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+    .hero button:hover {
+      background: #a93226;
+    }
+
+    .contenedor {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+
+    h3 {
+      color: var(--primary);
+      margin-bottom: 28px;
+      font-weight: 700;
+      font-size: 2rem;
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-bottom: 50px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-align: center;
+      padding: 18px;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.07);
+      transition: transform 0.25s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: contain; /* <- Cambiado de cover a contain para que se vea toda la imagen */
+      border-radius: 10px;
+      margin-bottom: 15px;
+      background-color: #f0f0f0; /* opcional, para que no se vea vacío si la imagen no ocupa todo el contenedor */
+    }
+    .card h4 {
+      margin: 10px 0 8px;
+      color: var(--primary);
+      font-size: 1.3rem;
+    }
+    .card p {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    .teoria {
+      background: var(--highlight);
+      border-radius: 12px;
+      padding: 35px 40px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      color: #333;
+      font-size: 1.1rem;
+    }
+
+    .teoria article {
+      margin-bottom: 48px;
+      border-bottom: 1px solid #e4d4d4;
+      padding-bottom: 30px;
+    }
+
+    .teoria h4 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .teoria h5 {
+      font-size: 1.3rem;
+      margin-top: 15px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #a93226;
+    }
+
+    .teoria p {
+      margin-bottom: 14px;
+      text-align: justify;
+      line-height: 1.7;
+    }
+
+    footer {
+      text-align: center;
+      background: var(--primary);
+      color: #fff;
+      padding: 18px 10px;
+      margin-top: 60px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 18px 10px;
+      }
+      nav a {
+        margin-left: 0;
+      }
+      .hero h2 {
+        font-size: 1.7rem;
+      }
+      .card img {
+        height: 180px;
+      }
+      .teoria {
+        font-size: 1rem;
+        padding: 25px 20px;
+      }
+      .teoria h4 {
+        font-size: 1.5rem;
+      }
+      .teoria h5 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎨 Galería de Arte</h1>
+    <nav>
+      <a class="active" href="#inicio">Inicio</a>
+      <a href="#galeria">Obras</a>
+      <a href="#teoria">Teoría</a>
+    </nav>
+  </header>
+
+  <section id="inicio" class="hero">
+    <h2>Bienvenidos al mundo del arte</h2>
+    <p>
+      Explora tres de las obras más icónicas de la historia del arte. 
+      Aquí encontrarás imágenes, análisis histórico, técnico y simbólico, y datos curiosos que te permitirán comprender mejor a los artistas y su legado.
+    </p>
+    <button onclick="mostrarMensaje()">Ver mensaje</button>
+  </section>
+
+  <main id="galeria" class="contenedor">
+    <h3>🖼️ Obras Famosas</h3>
+    <div class="grid">
+      <article class="card">
+        <img src="css/img/la noche estrellada.jpeg" alt="La noche estrellada" />
+        <h4>La Noche Estrellada</h4>
+        <p>Vincent van Gogh · 1889</p>
+      </article>
+
+      <article class="card">
+        <img src="css/img/images.jpg" alt="Mona Lisa" />
+        <h4>Mona Lisa</h4>
+        <p>Leonardo da Vinci · 1503 - 1519</p>
+      </article>
+
+      <article class="card">
+        <img src="css/img/La Santa Cena.jpg" alt="La Santa Cena" />
+        <h4>La Santa Cena</h4>
+        <p>Leonardo da Vinci · 1495 - 1498</p>
+      </article>
+    </div>
+  </main>
+
+  <section id="teoria" class="contenedor teoria">
+    <h3>📚 Teoría y Análisis Completo de las Obras</h3>
+
+    <!-- La Noche Estrellada -->
+    <article>
+      <h4>La Noche Estrellada</h4>
+      <h5>Contexto histórico</h5>
+      <p>Pintada en 1889 durante la estancia de Van Gogh en el asilo de Saint-Rémy, Francia, durante un periodo de crisis personal. El artista buscó expresar emociones profundas a través de pinceladas dinámicas y colores vivos.</p>
+      <h5>Biografía del artista</h5>
+      <p>Vincent van Gogh (1853–1890), pintor neerlandés, tuvo una vida marcada por la lucha emocional y económica. Sus innovaciones en color y forma influyeron decisivamente en el arte moderno.</p>
+      <h5>Técnica y estilo</h5>
+      <p>Óleo sobre lienzo, pinceladas gruesas y ondulantes, predominio de azules y amarillos, que transmiten movimiento y energía.</p>
+      <h5>Análisis del color y composición</h5>
+      <p>El cielo vibrante y los remolinos contrastan con el tranquilo pueblo. Los cipreses conectan tierra y cielo, creando armonía y tensión visual al mismo tiempo.</p>
+      <h5>Simbolismo y significado</h5>
+      <p>El cielo estrellado simboliza trascendencia y espiritualidad, los cipreses representan vida y muerte, mientras que el pueblo refleja serenidad y cotidianeidad.</p>
+      <h5>Recepción histórica</h5>
+      <p>Originalmente subvalorada, hoy es una obra emblemática del postimpresionismo, reconocida mundialmente por su emotividad y técnica innovadora.</p>
+      <h5>Curiosidades</h5>
+      <p>Van Gogh nunca vendió esta obra en vida. Actualmente se encuentra en el Museo de Arte Moderno (MoMA), Nueva York.</p>
+      <h5>Legado</h5>
+      <p>Inspiró a artistas modernos y sigue siendo referencia en museos y estudios de arte alrededor del mundo.</p>
+    </article>
+
+    <!-- Mona Lisa -->
+    <article>
+      <h4>Mona Lisa</h4>
+      <h5>Contexto histórico</h5>
+      <p>Creada entre 1503 y 1519 durante el Renacimiento italiano, es una obra emblemática de Leonardo da Vinci que refleja el humanismo renacentista y la perfección técnica de la época.</p>
+      <h5>Biografía del artista</h5>
+      <p>Leonardo da Vinci (1452–1519), polímata italiano, fue pintor, inventor y científico. Su curiosidad por la anatomía, la perspectiva y la luz influyó en la calidad realista de sus obras.</p>
+      <h5>Técnica y estilo</h5>
+      <p>Óleo sobre tabla de álamo. Uso magistral del sfumato para crear transiciones suaves y realismo en la piel y expresiones faciales.</p>
+      <h5>Análisis del color y composición</h5>
+      <p>Predominan tonos cálidos y suaves. La figura está centrada, con un fondo de paisaje difuminado que da profundidad. La mirada y la sonrisa sutil capturan la atención del espectador.</p>
+      <h5>Simbolismo y significado</h5>
+      <p>La sonrisa enigmática ha sido interpretada como un símbolo de misterio y dualidad humana. La obra refleja equilibrio entre figura humana y naturaleza.</p>
+      <h5>Recepción histórica</h5>
+      <p>Rápidamente admirada por su técnica y misterio, con el tiempo se convirtió en la pintura más famosa y reconocida mundialmente, protegida en el Museo del Louvre, París.</p>
+      <h5>Curiosidades</h5>
+      <p>Ha sido objeto de robos, copias y estudios científicos para entender su técnica y composición. Se considera un icono cultural universal.</p>
+      <h5>Legado</h5>
+      <p>Ha influido en artistas, cine, literatura y publicidad, convirtiéndose en un símbolo de la perfección artística y del Renacimiento.</p>
+    </article>
+
+    <!-- La Santa Cena -->
+    <article>
+      <h4>La Santa Cena</h4>
+      <h5>Contexto histórico</h5>
+      <p>Pintada entre 1495 y 1498 en el convento de Santa Maria delle Grazie, Milán, representa el momento bíblico de la Última Cena y refleja el auge del Renacimiento en Italia.</p>
+      <h5>Biografía del artista</h5>
+      <p>Leonardo da Vinci (1452–1519) aplicó su profundo conocimiento de anatomía, perspectiva y luz para lograr una composición equilibrada y expresiva que trascendiera lo religioso.</p>
+      <h5>Técnica y estilo</h5>
+      <p>Técnica mural con temple y óleo sobre yeso seco. Leonardo innovó con la perspectiva lineal y la disposición de las figuras para dar profundidad dramática.</p>
+      <h5>Análisis del color y composición</h5>
+      <p>La disposición de los apóstoles en grupos de tres y la perspectiva hacia Cristo crean un punto focal central. Colores apagados y degradados refuerzan la solemnidad del momento.</p>
+      <h5>Simbolismo y significado</h5>
+      <p>Representa el momento de la traición de Judas. Cada apóstol tiene expresiones únicas, mostrando emociones humanas y la tensión narrativa del evento.</p>
+      <h5>Recepción histórica</h5>
+      <p>Considerada un logro técnico y narrativo del Renacimiento, ha sido objeto de restauraciones y estudios continuos, apreciada por su precisión y emotividad.</p>
+      <h5>Curiosidades</h5>
+      <p>La obra ha sufrido daños por humedad y restauraciones, y se encuentra protegida detrás de vidrio en Milán. Su influencia ha sido enorme en el arte religioso y cinematográfico.</p>
+      <h5>Legado</h5>
+      <p>Inspiró a generaciones de artistas y sigue siendo un ejemplo de perfección compositiva, uso de la perspectiva y estudio de la emoción humana en el arte.</p>
+    </article>
+
+  </section>
+
+  <footer>
+    &copy; 2025 Galería de Arte | Todos los derechos reservados
+  </footer>
+
+  <script>
+    function mostrarMensaje() {
+      alert("¡Explora la teoría completa y descubre más sobre estas obras maestras!");
+    }
+  </script>
+
+</body>
+</html>
+
+
